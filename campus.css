@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    padding: 20px;
+    transition: background-color 0.3s;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+#missionInput {
+    flex: 1;
+    padding: 8px;
+}
+
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.counters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.mission-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 6px;
+    background: #f7fafc;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.mission-item.completed {
+    background: #e6fffa;
+}
+
+.mission-item.completed .mission-text {
+    text-decoration: line-through;
+    color: green;
+}
+
+.mission-text {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.delete-btn {
+    background: #fed7d7;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.motivation {
+    text-align: center;
+    margin-top: 15px;
+    color: #38a169;
+}

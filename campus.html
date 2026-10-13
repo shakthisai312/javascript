@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Quest - Mission Tracker</title>
+    <link rel="stylesheet" href="campus.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Campus Quest</h1>
+                <p>Mission Tracker</p>
+                <small>Small steps. Big goals!</small>
+            </div>
+            <button id="changeColourBtn">Change Colour</button>
+        </header>
+
+        <div class="add-section">
+            <input type="text" id="missionInput" placeholder="Enter a mission...">
+            <button id="addBtn">Add Mission</button>
+        </div>
+
+        <div class="counters">
+            <div>Total Missions: <strong id="totalCount">0</strong></div>
+            <div>Completed Missions: <strong id="completedCount">0</strong></div>
+            <div>Pending Missions: <strong id="pendingCount">0</strong></div>
+        </div>
+
+        <h2>My Missions</h2>
+        <div id="missionList"></div>
+
+        <p class="motivation">Keep going! You're doing great!</p>
+    </div>
+
+    <script src="campus.js"></script>
+</body>
+</html>
