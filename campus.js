@@ -1,119 +1,59 @@
-// Get all needed elements
-const missionInput = document.getElementById("missionInput");
-const addBtn = document.getElementById("addBtn");
-const missionList = document.getElementById("missionList");
-const totalCount = document.getElementById("totalCount");
-const completedCount = document.getElementById("completedCount");
-const pendingCount = document.getElementById("pendingCount");
-const changeColourBtn = document.getElementById("changeColourBtn");
+let form = document.querySelector("#todo-form");
+let input = document.querySelector("#task-input");
+let taskList = document.querySelector("#task-list");
+let message = document.querySelector("#message");
 
-// Background colours (at least 3)
-const colours = ["#f0f4f8", "#e6fffa", "#faf5ff", "#fff5f5"];
-let colourIndex = 0;
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-// Function to update the three counters
-function updateCounters() {
-    const total = missionList.children.length;
-    let completed = 0;
+  let taskText = input.value.trim();
 
-    for (let i = 0; i < total; i++) {
-        if (missionList.children[i].classList.contains("completed")) {
-            completed = completed + 1;
-        }
-    }
+  if (taskText === "") {
+    message.textContent = "Please type a task first.";
+    input.focus();
+    return;
+  }
 
-    totalCount.textContent = total;
-    completedCount.textContent = completed;
-    pendingCount.textContent = total - completed;
-}
+  message.textContent = "";
 
-// Function to add a new mission
-function addMission() {
-    const text = missionInput.value.trim();
+  let listItem = document.createElement("li");
+  listItem.className = "task-item";
 
-    // Reject empty or spaces-only input
-    if (text === "") {
-        return;
-    }
+  let text = document.createElement("span");
+  text.className = "task-text";
+  text.textContent = taskText;
 
-    // Create the mission item
-    const item = document.createElement("div");
-    item.className = "mission-item";
+  let completeButton = document.createElement("button");
+  completeButton.type = "button";
+  completeButton.textContent = "Complete";
+  completeButton.setAttribute("aria-pressed", "false");
+  completeButton.addEventListener("click", function () {
+    let isComplete = listItem.classList.toggle("completed");
+    completeButton.textContent = isComplete ? "Undo" : "Complete";
+    completeButton.setAttribute("aria-pressed", String(isComplete));
+  });
 
-    // Circle symbol
-    const check = document.createElement("span");
-    check.className = "check";
-    check.textContent = "O";
+  let deleteButton = document.createElement("button");
+  deleteButton.type = "button";
+  deleteButton.className = "delete-button";
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", function () {
+    listItem.remove();
+  });
 
-    // Mission text
-    const missionText = document.createElement("span");
-    missionText.className = "mission-text";
-    missionText.textContent = text;
+  listItem.append(text, completeButton, deleteButton);
+  taskList.append(listItem);
 
-    // Delete button
-    const deleteBtn = document.createElement("button");
-    deleteBtn.className = "delete-btn";
-    deleteBtn.textContent = "Delete";
-
-    // Append children
-    item.appendChild(check);
-    item.appendChild(missionText);
-    item.appendChild(deleteBtn);
-
-    // Toggle complete when clicking the item (not the delete button)
-    item.addEventListener("click", function (e) {
-        if (e.target === deleteBtn) {
-            return;
-        }
-
-        item.classList.toggle("completed");
-
-        if (item.classList.contains("completed")) {
-            check.textContent = "X";
-        } else {
-            check.textContent = "O";
-        }
-
-        updateCounters();
-    });
-
-    // Delete the mission
-    deleteBtn.addEventListener("click", function () {
-        item.remove();
-        updateCounters();
-    });
-
-    // Add to list
-    missionList.appendChild(item);
-
-    // Clear input
-    missionInput.value = "";
-
-    // Update counters
-    updateCounters();
-}
-
-// Function to change background colour
-function changeColour() {
-    colourIndex = colourIndex + 1;
-
-    if (colourIndex >= colours.length) {
-        colourIndex = 0;
-    }
-
-    document.body.style.backgroundColor = colours[colourIndex];
-}
-
-// Event listeners
-addBtn.addEventListener("click", addMission);
-
-missionInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-        addMission();
-    }
+  input.value = "";
+  input.focus();
 });
 
-changeColourBtn.addEventListener("click", changeColour);
+let clearAllButton = document.querySelector("#clear-all");
 
-// Initialize counters
-updateCounters();
+clearAllButton.addEventListener("click", function () {
+  taskList.innerHTML = "";
+  message.textContent = "All tasks cleared!";
+});
+
+
+
