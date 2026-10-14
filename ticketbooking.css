@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #eef3f8;
+    margin: 20px;
+}
+
+h1 {
+    background: #203864;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+section {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+button {
+    background: #2878d0;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.movie, .booking {
+    background: #eef3f8;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+}
+
+#message {
+    color: #d33;
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}

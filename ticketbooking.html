@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="ticketbooking.css">
+</head>
+<body>
+
+<h1> Movie Ticket Booking System</h1>
+
+<div class="container">
+    <section>
+        <h2>Available Movies</h2>
+        <div id="movies"></div>
+
+        <h2>Book Your Tickets</h2>
+        <form id="bookingForm">
+            <select id="movie" required>
+                <option value="">Select Movie</option>
+            </select>
+
+            <select id="show" required>
+                <option value="">Select Showtime</option>
+                <option>10:00 AM</option>
+                <option>2:00 PM</option>
+                <option>6:00 PM</option>
+                <option>9:00 PM</option>
+            </select>
+
+            <input type="email" id="email"
+                   placeholder="Email address" required>
+
+            <input type="number" id="quantity"
+                   placeholder="Number of tickets"
+                   min="1" step="1" required>
+
+            <button type="submit">Book Tickets</button>
+            <button type="reset">Reset</button>
+        </form>
+
+        <p id="message"></p>
+        <h3 id="total">Total Price: ₹0</h3>
+    </section>
+
+    <section>
+        <h2>Your Bookings (<span id="count">0</span>)</h2>
+        <input id="search" placeholder="Search by movie name">
+        <div id="bookings"></div>
+    </section>
+</div>
+
+<script src="ticketbooking.js"></script>
+</body>
+</html>

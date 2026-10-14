@@ -1,7 +1,7 @@
-let form = document.querySelector("#todo-form");
-let input = document.querySelector("#task-input");
-let taskList = document.querySelector("#task-list");
-let message = document.querySelector("#message");
+let form = document.getElementById("todo-form");
+let input = document.getElementById("task-input");
+let taskList = document.getElementById("task-list");
+let message = document.getElementById("message");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -26,7 +26,6 @@ form.addEventListener("submit", function (event) {
   let completeButton = document.createElement("button");
   completeButton.type = "button";
   completeButton.textContent = "Complete";
-  completeButton.setAttribute("aria-pressed", "false");
   completeButton.addEventListener("click", function () {
     let isComplete = listItem.classList.toggle("completed");
     completeButton.textContent = isComplete ? "Undo" : "Complete";
@@ -48,7 +47,7 @@ form.addEventListener("submit", function (event) {
   input.focus();
 });
 
-let clearAllButton = document.querySelector("#clear-all");
+let clearAllButton = document.getElementById("clear-all");
 
 clearAllButton.addEventListener("click", function () {
   taskList.innerHTML = "";
